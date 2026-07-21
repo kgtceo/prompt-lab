@@ -1,0 +1,21 @@
+[
+  {
+    "name": "sentiment-one-word",
+    "cases": [
+      {"input": "I absolutely loved it, best purchase this year!", "expectation": "Exactly one lowercase word: positive"},
+      {"input": "Terrible. Broke on day one.", "expectation": "Exactly one lowercase word: negative"},
+      {"input": "It's fine, does the job.", "expectation": "Exactly one lowercase word: neutral"}
+    ],
+    "good_prompt": "Classify the sentiment of this review as exactly one lowercase word — positive, negative, or neutral. Output only that word, nothing else.\n\nReview: {input}",
+    "bad_prompt": "Tell me your thoughts about this review: {input}"
+  },
+  {
+    "name": "extract-year",
+    "cases": [
+      {"input": "The treaty was signed in 1994 after long talks.", "expectation": "Just the 4-digit year: 1994"},
+      {"input": "She graduated in the summer of 2008.", "expectation": "Just the 4-digit year: 2008"}
+    ],
+    "good_prompt": "Extract the 4-digit year from the text. Output only the year, nothing else.\n\nText: {input}",
+    "bad_prompt": "What can you tell me about the timeline here? {input}"
+  }
+]
