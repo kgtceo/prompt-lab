@@ -7,6 +7,10 @@ pattern, and a suggested better prompt. (First run ~15–30s.)
 
 ![prompt-lab: a prompt scored across test cases, with a pass-rate, per-case reasons, and a suggested improved prompt](docs/images/screenshot.png)
 
+**How it works** — input → pipeline → output, with the eval harness that measures it:
+
+![prompt-lab — architecture and eval harness](docs/images/architecture.png)
+
 **Measure a prompt, don't vibe it.** Paste a prompt (with an `{input}` placeholder) and a handful of
 test cases (each an input + what a good output should do); prompt-lab runs the prompt on every case,
 an **independent judge** scores pass/fail, and you get a **pass-rate**, the common **failure
