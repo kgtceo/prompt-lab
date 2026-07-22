@@ -50,6 +50,8 @@ python evals/run_evals.py   # proves the harness discriminates good prompts from
 For each task, a good prompt must beat a bad prompt's pass-rate on the same cases (and the good one
 should pass all cases).
 
+**Latest run (claude-sonnet-4-6):** on both tasks (sentiment-one-word, extract-year) the good prompt scores pass-rate 1.0 versus the bad prompt's 0.0 — the harness cleanly discriminates.
+
 ## Tests
 
 ```bash
@@ -59,7 +61,24 @@ pytest -q   # offline: the run loop, pass-rate aggregation, {input} substitution
 ## Web
 
 `web/` — a Next.js UI: edit a prompt + cases, run, see per-case pass/fail with reasons, the failure
-pattern, and the suggested prompt. See [DEPLOY.md](./DEPLOY.md).
+pattern, and the suggested prompt.
+
+Run it locally in two terminals:
+
+```bash
+# terminal 1 — the API
+pip install -e .
+cp .env.example .env                  # add ANTHROPIC_API_KEY
+python -m uvicorn prompt_lab.api:app --port 8000
+
+# terminal 2 — the UI
+cd web
+npm install
+echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
+npm run dev                           # open http://localhost:3000
+```
+
+See [DEPLOY.md](./DEPLOY.md).
 
 ## License
 
